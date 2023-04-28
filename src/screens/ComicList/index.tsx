@@ -11,9 +11,9 @@ import store from '../../store';
 import style from './style';
 
 const ComicList: FC = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState<string>('');
   const getData = useCallback(() => {
-    store.dispatch(productActions.getComicListAT());
+    store.dispatch(productActions.getComicListAT(''));
   }, []);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const ComicList: FC = () => {
             w="1/6"
             h="full"
             onPress={() => {
-              store.dispatch(productActions.getCharaterListAT());
+              store.dispatch(productActions.getComicListAT(searchValue));
             }}>
             Search
           </Button>

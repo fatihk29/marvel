@@ -8,10 +8,12 @@ const endPoints = {
 };
 
 // /v1/public/characters
-export const getCharaterList = async (): Promise<any> => {
-  console.log('getCharaterList :>> ');
+export const getCharaterList = async (load: string): Promise<any> => {
+  console.log('getCharaterList :>> ', load);
   try {
-    const response = await axiosClient.get(`/characters?&limit=3&${QUERY}`);
+    const response = await axiosClient.get(
+      `/characters?offset=0&${load ? `nameStartsWith=${load}` : ''}&limit=6&${QUERY}`,
+    );
     if (response?.data) {
       return Promise.resolve(response.data);
     } else {
@@ -25,7 +27,7 @@ export const getCharaterList = async (): Promise<any> => {
 // /v1/public/characters/{characterId}
 export const getCharaterById = async (characterId: string): Promise<any> => {
   try {
-    const response = await axiosClient.get(`${endPoints.characterId}/${characterId}`);
+    const response = await axiosClient.get(`/characters/${characterId}?&${QUERY}`);
     // console.log('response', response?.data)
     if (response?.data) {
       return Promise.resolve(response.data);
@@ -53,9 +55,11 @@ export const getCharaterByIdWithComics = async (characterId: string): Promise<an
 };
 
 // /v1/public/comics
-export const getComicList = async (): Promise<any> => {
+export const getComicList = async (load: string): Promise<any> => {
   try {
-    const response = await axiosClient.get(`/comics?&limit=3&${QUERY}`);
+    const response = await axiosClient.get(
+      `/comics?offset=0&${load ? `titleStartsWith=${load}` : ''}&limit=6&${QUERY}`,
+    );
     // console.log('response', response?.data)
     if (response?.data) {
       return Promise.resolve(response.data);

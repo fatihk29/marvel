@@ -1,5 +1,15 @@
 import React, {FC} from 'react';
-import {Box, Heading, AspectRatio, Image, Text, HStack, Stack, Pressable} from 'native-base';
+import {
+  Box,
+  Heading,
+  AspectRatio,
+  Image,
+  Text,
+  HStack,
+  Stack,
+  Pressable,
+  Button,
+} from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 
 // project imports
@@ -63,6 +73,18 @@ const ComicItem: FC<ComicItemProps> = ({item}) => {
                 {dateFormatter(item.modified)}
               </Text>
             </HStack>
+            <Button
+              w="20%"
+              p={1}
+              bg="cyan.200"
+              _pressed={{backgroundColor: 'cyan.300'}}
+              variant="subtle"
+              onPress={() => {
+                navigation.navigate(APP_ROUTER.SCREEN.comicDetail.path, {id: item.id});
+              }}
+              height="10">
+              <Text fontSize="16">Detail</Text>
+            </Button>
           </HStack>
         </Stack>
       </Box>

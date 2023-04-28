@@ -45,10 +45,10 @@ const initialState: IProduct = {
   comicByIdWithCreators: emptyResource(),
 };
 
-const getCharaterListAT = createAsyncThunk('product/charList', async (_, thunkAPI) => {
+const getCharaterListAT = createAsyncThunk('product/charList', async (load: string, thunkAPI) => {
   console.log('asd49 :>> ');
   try {
-    const response = await getCharaterList();
+    const response = await getCharaterList(load);
     if (response) {
       // console.log('response :>> ', response.data.results);
       return response.data.results;
@@ -64,7 +64,7 @@ const getCharaterByIdAT = createAsyncThunk('product/charid', async (load: string
   try {
     const response = await getCharaterById(load);
     if (response) {
-      return response;
+      return response.data.results;
     } else {
       return thunkAPI.rejectWithValue('no product data');
     }
@@ -89,9 +89,9 @@ const getCharaterByIdWithComicsAT = createAsyncThunk(
   },
 );
 
-const getComicListAT = createAsyncThunk('comicList', async (_, thunkAPI) => {
+const getComicListAT = createAsyncThunk('comicList', async (load: string, thunkAPI) => {
   try {
-    const response = await getComicList();
+    const response = await getComicList(load);
     if (response) {
       return response.data.results;
     } else {

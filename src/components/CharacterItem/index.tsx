@@ -21,7 +21,7 @@ interface CharacterItemProps {
 }
 
 const CharacterItem: FC<CharacterItemProps> = ({item}) => {
-  console.log('item14 :>> ', item);
+  // console.log('item14 :>> ', item);
   const navigation = useNavigation();
   return (
     <Pressable

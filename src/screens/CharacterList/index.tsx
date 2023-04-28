@@ -13,7 +13,7 @@ import style from './style';
 const CharacterList: FC = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const getData = useCallback(() => {
-    store.dispatch(productActions.getCharaterListAT());
+    store.dispatch(productActions.getCharaterListAT(''));
   }, []);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const CharacterList: FC = () => {
             w="1/6"
             h="full"
             onPress={() => {
-              store.dispatch(productActions.getCharaterListAT());
+              store.dispatch(productActions.getCharaterListAT(searchValue));
             }}>
             Search
           </Button>
