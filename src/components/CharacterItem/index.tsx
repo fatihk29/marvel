@@ -1,5 +1,15 @@
 import React, {FC} from 'react';
-import {Box, Heading, AspectRatio, Image, Text, HStack, Stack, Pressable} from 'native-base';
+import {
+  Box,
+  Heading,
+  AspectRatio,
+  Image,
+  Text,
+  HStack,
+  Stack,
+  Pressable,
+  Button,
+} from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 
 // project imports
@@ -11,7 +21,7 @@ interface CharacterItemProps {
 }
 
 const CharacterItem: FC<CharacterItemProps> = ({item}) => {
-  // console.log('item14 :>> ', item.id);
+  console.log('item14 :>> ', item);
   const navigation = useNavigation();
   return (
     <Pressable
@@ -37,7 +47,7 @@ const CharacterItem: FC<CharacterItemProps> = ({item}) => {
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
               source={{
-                uri: 'https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg',
+                uri: `${item?.thumbnail?.path}.${item?.thumbnail?.extension}`,
               }}
               alt="image"
             />
@@ -48,22 +58,9 @@ const CharacterItem: FC<CharacterItemProps> = ({item}) => {
             <Heading size="md" ml="-1">
               {item.name}
             </Heading>
-            <Text
-              fontSize="xs"
-              _light={{
-                color: 'violet.500',
-              }}
-              _dark={{
-                color: 'violet.400',
-              }}
-              fontWeight="500"
-              ml="-0.5"
-              mt="-1">
-              The Silicon Valley of India.
-            </Text>
           </Stack>
           <Text fontWeight="400" noOfLines={2}>
-            {item.description}
+            {item.description ? item.description : 'No Description'}
           </Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">
             <HStack alignItems="center">
@@ -76,6 +73,18 @@ const CharacterItem: FC<CharacterItemProps> = ({item}) => {
                 {dateFormatter(item.modified)}
               </Text>
             </HStack>
+            <Button
+              w="20%"
+              p={1}
+              bg="cyan.200"
+              _pressed={{backgroundColor: 'cyan.300'}}
+              variant="subtle"
+              onPress={() => {
+                navigation.navigate(APP_ROUTER.SCREEN.characterDetail.path, {id: item.id});
+              }}
+              height="10">
+              <Text fontSize="16">Detail</Text>
+            </Button>
           </HStack>
         </Stack>
       </Box>

@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 // project imports
 import store from '../../store';
 
-const ComicBookDetail: FC = () => {
+const ComicDetail: FC = () => {
   const getData = useCallback(() => {
     // store.dispatch(productActions.getCharaterListAT());
   }, []);
@@ -14,9 +14,9 @@ const ComicBookDetail: FC = () => {
 
   return (
     <View>
-      <Text>ComicBookDetail</Text>
+      <Text>ComicDetail</Text>
     </View>
   );
 };
 
-export default ComicBookDetail;
+export default ComicDetail;

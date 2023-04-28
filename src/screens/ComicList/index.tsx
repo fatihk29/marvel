@@ -6,11 +6,11 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 // project imports
 import {productActions, productsSelectors} from '../../store/slices/product';
-import ComicBookItem from '../../components/ComicBookItem';
+import ComicItem from '../../components/ComicItem';
 import store from '../../store';
 import style from './style';
 
-const ComicBookList: FC = () => {
+const ComicList: FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const getData = useCallback(() => {
     store.dispatch(productActions.getComicListAT());
@@ -54,11 +54,11 @@ const ComicBookList: FC = () => {
       <FlatList
         data={data?.data}
         keyExtractor={(item: any) => item.id}
-        renderItem={({item}) => <ComicBookItem item={item} />}
+        renderItem={({item}) => <ComicItem item={item} />}
         ListFooterComponent={() => <VStack mb="20" />}
       />
     </SafeAreaView>
   );
 };
 
-export default ComicBookList;
+export default ComicList;

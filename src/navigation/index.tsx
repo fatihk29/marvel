@@ -7,9 +7,9 @@ import MI from 'react-native-vector-icons/MaterialIcons';
 // project imports
 import {APP_ROUTER} from './app-router';
 import CharacterList from '../screens/CharacterList';
-import ComicBookList from '../screens/ComicBookList';
+import ComicList from '../screens/ComicList';
 import CharacterDetail from '../screens/CharacterDetail';
-import ComicBookDetail from '../screens/ComicBookDetail';
+import ComicDetail from '../screens/ComicDetail';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -34,8 +34,8 @@ const BottomTabNavigator: FC<any> = ({navigation}) => {
         }}
       />
       <BottomTab.Screen
-        name={APP_ROUTER.SCREEN.comicBookList.path}
-        component={ComicBookList}
+        name={APP_ROUTER.SCREEN.comicList.path}
+        component={ComicList}
         options={{
           tabBarIcon: item => (
             <MI name="book" size={30} color={item.focused ? item.color : '#ccc'} />
@@ -65,8 +65,8 @@ const AppNavigator: FC = () => {
           }}
         />
         <Stack.Screen
-          name={APP_ROUTER.SCREEN.comicBookDetail.path}
-          component={ComicBookDetail}
+          name={APP_ROUTER.SCREEN.comicDetail.path}
+          component={ComicDetail}
           options={{
             headerShown: true,
           }}

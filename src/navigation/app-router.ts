@@ -4,17 +4,17 @@ export const APP_ROUTER: IAPP_ROUTER = {
       path: 'characterlist',
       label: 'screen:characterlist',
     },
-    comicBookList: {
-      path: 'comicbooklist',
-      label: 'screen:comicbooklist',
+    comicList: {
+      path: 'comiclist',
+      label: 'screen:comiclist',
     },
     characterDetail: {
       path: 'characterDetail',
       label: 'screen:characterDetail',
     },
-    comicBookDetail: {
-      path: 'comicBookDetail',
-      label: 'screen:characterDetail',
+    comicDetail: {
+      path: 'comicDetail',
+      label: 'screen:comicDetail',
     },
   },
 };
@@ -27,8 +27,8 @@ export interface IAPPRouterItem {
 interface IAPP_ROUTER {
   SCREEN: {
     characterList: IAPPRouterItem;
-    comicBookList: IAPPRouterItem;
+    comicList: IAPPRouterItem;
     characterDetail: IAPPRouterItem;
-    comicBookDetail: IAPPRouterItem;
+    comicDetail: IAPPRouterItem;
   };
 }

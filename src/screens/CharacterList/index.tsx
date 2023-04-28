@@ -13,11 +13,11 @@ import style from './style';
 const CharacterList: FC = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const getData = useCallback(() => {
-    // store.dispatch(productActions.getCharaterListAT());
+    store.dispatch(productActions.getCharaterListAT());
   }, []);
 
   useEffect(() => {
-    // getData();
+    getData();
   }, [getData]);
 
   const data = useSelector(productsSelectors.charaterList);

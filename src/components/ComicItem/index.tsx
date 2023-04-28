@@ -6,11 +6,11 @@ import {useNavigation} from '@react-navigation/native';
 import {dateFormatter} from '../../helper/time';
 import {APP_ROUTER} from '../../navigation/app-router';
 
-interface ComicBookItemProps {
+interface ComicItemProps {
   item: any;
 }
 
-const ComicBookItem: FC<ComicBookItemProps> = ({item}) => {
+const ComicItem: FC<ComicItemProps> = ({item}) => {
   const navigation = useNavigation();
   // console.log('item12 :>> ', item.id);
   return (
@@ -18,7 +18,7 @@ const ComicBookItem: FC<ComicBookItemProps> = ({item}) => {
       alignItems="center"
       pt={5}
       onPress={() => {
-        navigation.navigate(APP_ROUTER.SCREEN.comicBookDetail.path, {id: item.id});
+        navigation.navigate(APP_ROUTER.SCREEN.comicDetail.path, {id: item.id});
       }}>
       <Box
         maxW="90%"
@@ -37,7 +37,7 @@ const ComicBookItem: FC<ComicBookItemProps> = ({item}) => {
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
               source={{
-                uri: 'https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg',
+                uri: `${item?.thumbnail?.path}.${item?.thumbnail?.extension}`,
               }}
               alt="image"
             />
@@ -46,24 +46,11 @@ const ComicBookItem: FC<ComicBookItemProps> = ({item}) => {
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
-              {item.name}
+              {item.title}
             </Heading>
-            <Text
-              fontSize="xs"
-              _light={{
-                color: 'violet.500',
-              }}
-              _dark={{
-                color: 'violet.400',
-              }}
-              fontWeight="500"
-              ml="-0.5"
-              mt="-1">
-              The Silicon Valley of India.
-            </Text>
           </Stack>
           <Text fontWeight="400" noOfLines={2}>
-            {item.description}
+            {item.description ? item.description : 'No Description'}
           </Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">
             <HStack alignItems="center">
@@ -83,4 +70,4 @@ const ComicBookItem: FC<ComicBookItemProps> = ({item}) => {
   );
 };
 
-export default ComicBookItem;
+export default ComicItem;
