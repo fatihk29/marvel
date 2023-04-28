@@ -27,8 +27,6 @@ const CharacterDetail: FC<any> = ({route}) => {
     getData();
   }, [getData]);
 
-  console.log('params :>> ', route.params?.id);
-
   const data = useSelector(productsSelectors.characterById);
   // console.log('data :>> ', data.data?.[0]);
   const [sdata, setSData] = useState<any>();
@@ -37,7 +35,7 @@ const CharacterDetail: FC<any> = ({route}) => {
     setSData(data.data?.[0]);
   }, [data]);
 
-  console.log('sdata :>> ', sdata?.series?.items);
+  // console.log('sdata :>> ', sdata?.series?.items);
 
   return (
     <ScrollView>

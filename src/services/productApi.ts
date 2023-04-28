@@ -74,7 +74,7 @@ export const getComicList = async (load: string): Promise<any> => {
 // /v1/public/comics/{comicId}
 export const getComicById = async (comicId: string): Promise<any> => {
   try {
-    const response = await axiosClient.get(`${endPoints.comicId}/${comicId}`);
+    const response = await axiosClient.get(`/comics/${comicId}?&${QUERY}`);
     // console.log('response', response?.data)
     if (response?.data) {
       return Promise.resolve(response.data);

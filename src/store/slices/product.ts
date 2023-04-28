@@ -106,7 +106,7 @@ const getComicByIdAT = createAsyncThunk('comicId', async (load: string, thunkAPI
   try {
     const response = await getComicById(load);
     if (response) {
-      return response;
+      return response.data.results;
     } else {
       return thunkAPI.rejectWithValue('no product data');
     }
