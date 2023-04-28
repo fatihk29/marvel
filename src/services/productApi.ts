@@ -8,13 +8,10 @@ const endPoints = {
 };
 
 // /v1/public/characters
-export const getCharaterList = async (title = 'iron man'): Promise<any> => {
+export const getCharaterList = async (): Promise<any> => {
   console.log('getCharaterList :>> ');
   try {
-    const response = await axiosClient.get(
-      `/comics?${title ? `title=${title}&` : ''}limit=80&${QUERY}`,
-    );
-    console.log('response', response?.data);
+    const response = await axiosClient.get(`/characters?&limit=3&${QUERY}`);
     if (response?.data) {
       return Promise.resolve(response.data);
     } else {
@@ -58,7 +55,7 @@ export const getCharaterByIdWithComics = async (characterId: string): Promise<an
 // /v1/public/comics
 export const getComicList = async (): Promise<any> => {
   try {
-    const response = await axiosClient.get(endPoints.comics);
+    const response = await axiosClient.get(`/comics?&limit=3&${QUERY}`);
     // console.log('response', response?.data)
     if (response?.data) {
       return Promise.resolve(response.data);

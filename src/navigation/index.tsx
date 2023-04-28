@@ -8,6 +8,8 @@ import MI from 'react-native-vector-icons/MaterialIcons';
 import {APP_ROUTER} from './app-router';
 import CharacterList from '../screens/CharacterList';
 import ComicBookList from '../screens/ComicBookList';
+import CharacterDetail from '../screens/CharacterDetail';
+import ComicBookDetail from '../screens/ComicBookDetail';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -23,7 +25,7 @@ const BottomTabNavigator: FC<any> = ({navigation}) => {
         },
       })}>
       <BottomTab.Screen
-        name={APP_ROUTER.SCREEN.characterlist.path}
+        name={APP_ROUTER.SCREEN.characterList.path}
         component={CharacterList}
         options={{
           tabBarIcon: item => (
@@ -32,7 +34,7 @@ const BottomTabNavigator: FC<any> = ({navigation}) => {
         }}
       />
       <BottomTab.Screen
-        name={APP_ROUTER.SCREEN.comicbooklist.path}
+        name={APP_ROUTER.SCREEN.comicBookList.path}
         component={ComicBookList}
         options={{
           tabBarIcon: item => (
@@ -55,20 +57,20 @@ const AppNavigator: FC = () => {
             headerShown: false,
           }}
         />
-        {/* <Stack.Screen
-          name={APP_ROUTER.SCREEN.characterlist.path}
-          component={CharacterList}
+        <Stack.Screen
+          name={APP_ROUTER.SCREEN.characterDetail.path}
+          component={CharacterDetail}
           options={{
             headerShown: true,
           }}
         />
         <Stack.Screen
-          name={APP_ROUTER.SCREEN.comicbooklist.path}
-          component={ComicBookList}
+          name={APP_ROUTER.SCREEN.comicBookDetail.path}
+          component={ComicBookDetail}
           options={{
             headerShown: true,
           }}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

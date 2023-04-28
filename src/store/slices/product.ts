@@ -50,8 +50,8 @@ const getCharaterListAT = createAsyncThunk('product/charList', async (_, thunkAP
   try {
     const response = await getCharaterList();
     if (response) {
-      console.log('response :>> ', response);
-      return response;
+      // console.log('response :>> ', response.data.results);
+      return response.data.results;
     } else {
       return thunkAPI.rejectWithValue('no product data');
     }
@@ -93,7 +93,7 @@ const getComicListAT = createAsyncThunk('comicList', async (_, thunkAPI) => {
   try {
     const response = await getComicList();
     if (response) {
-      return response;
+      return response.data.results;
     } else {
       return thunkAPI.rejectWithValue('no product data');
     }
@@ -152,22 +152,18 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    console.log('asdasd155 :>> ');
     // charaterList start
     builder.addCase(getCharaterListAT.pending, (state, _) => {
-      console.log('asd3 :>> ');
       state.charaterList.pending = true;
       state.charaterList.data = null;
       state.charaterList.err = null;
     });
     builder.addCase(getCharaterListAT.fulfilled, (state, action) => {
-      console.log('asd3 :>> ');
       state.charaterList.data = action.payload;
       state.charaterList.err = null;
       state.charaterList.pending = false;
     });
     builder.addCase(getCharaterListAT.rejected, (state, action) => {
-      console.log('asd3 :>> ');
       state.charaterList.err = action.error.message;
       state.charaterList.data = null;
       state.charaterList.pending = false;
@@ -292,7 +288,6 @@ export const productActions = {
 export const productsSelectors = {
   charaterList: (state: any) => state.product.charaterList,
   characterById: (state: any) => state.product.characterById,
-  hotdeals: (state: any) => state.product.hotdeals,
   charaterByIdWithComics: (state: any) => state.product.charaterByIdWithComics,
   comicList: (state: any) => state.product.comicList,
   comicById: (state: any) => state.product.comicById,

@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
+import {NativeBaseProvider} from 'native-base';
 
 // project imports
 import AppNavigator from './src/navigation';
@@ -10,7 +11,9 @@ const App: FC = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <AppNavigator />
+        <NativeBaseProvider>
+          <AppNavigator />
+        </NativeBaseProvider>
       </PersistGate>
     </Provider>
   );
